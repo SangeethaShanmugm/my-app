@@ -9,7 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { API } from "./global"
 
 
-export function Movie({ movie, id, deleteButton }) {
+export function Movie({ movie, id, deleteButton, editButton }) {
   // const movie = {
   //   name: "The Avengers",
   //   rating: 8,
@@ -61,7 +61,7 @@ export function Movie({ movie, id, deleteButton }) {
 
       {/* <p style= {summaryStyle} className="movie-summary">{movie.summary}</p> */}
       {show ? <p className="movie-summary">{movie.summary}</p> : null}
-      <Counter /> {deleteButton}
+      <Counter /> {deleteButton} {editButton}
       {/* <IconButton onClick={() =>
       {      
           fetch(`${API}/movie/${id}`, {

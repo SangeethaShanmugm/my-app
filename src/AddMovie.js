@@ -2,6 +2,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API } from "./global"
 
 export function AddMovie({ movieList, setMovieList }) {
 
@@ -26,7 +27,7 @@ export function AddMovie({ movieList, setMovieList }) {
         <TextField onChange={(e) => setTrailer(e.target.value)} label="Trailer" variant="standard" />
 
         <Button variant="contained"
-          //cope the MovieList and add newMovie to it
+          //copy the MovieList and add newMovie to it
           onClick={() => {
             const newMovie = {
               name: name,
@@ -35,9 +36,24 @@ export function AddMovie({ movieList, setMovieList }) {
               summary: summary,
               trailer: trailer,
             };
-
-            setMovieList([...movieList, newMovie]);
-            navigate("/movie")
+           
+            // setMovieList([...movieList, newMovie]);
+            // 1. method - POST
+            // 2. body - data -JSON
+            // 3. Headers -JSON
+             
+            fetch(`${API}/movie`,{
+              method: "POST",
+              body: JSON.stringify(newMovie),
+              headers: {
+                "Content-Type": "application/json",
+              }
+            })
+            .then((data) => data.json())
+            .then(() => navigate("/movie"))
+             //Currently post and navigate is immediately 
+             // When post is complete -> navigate /movie
+            
           }}
         >Add Movie</Button>
 
