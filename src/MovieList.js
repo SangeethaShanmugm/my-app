@@ -12,7 +12,7 @@ export function MovieList() {
   const [movieList, setMovieList] = useState([]);
 
 const getMovies =() =>{
-  fetch(`${API}/movie`,{
+  fetch(`${API}/movies`,{
     method: "GET",
   })
   .then((data) => data.json())
@@ -40,7 +40,7 @@ const getMovies =() =>{
             onClick={() =>
               {    
                 //Deleting -> Refresh data   
-                  fetch(`${API}/movie/${mv.id}`, {
+                  fetch(`${API}/movies/${mv.id}`, {
                     method: "DELETE",})
                     .then(() => getMovies());    
                 

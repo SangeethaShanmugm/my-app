@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API } from "./global"
 
-export function AddMovie({ movieList, setMovieList }) {
+export function AddMovie() {
 
 
   const [name, setName] = useState("");
@@ -42,7 +42,7 @@ export function AddMovie({ movieList, setMovieList }) {
             // 2. body - data -JSON
             // 3. Headers -JSON
              
-            fetch(`${API}/movie`,{
+            fetch(`${API}/movies`,{
               method: "POST",
               body: JSON.stringify(newMovie),
               headers: {

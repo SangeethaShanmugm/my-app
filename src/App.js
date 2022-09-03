@@ -97,7 +97,7 @@ export default function App() {
   const [mode, setMode] = useState("light");
   
   useEffect(() => {
-    fetch(`${API}/movie`)
+    fetch(`${API}/movies`)
     .then((data) => data.json())
     .then((mvs) => console.log(mvs))
   }, [])
@@ -155,7 +155,7 @@ export default function App() {
         <Route path="/movie" element={<MovieList />} />
         <Route path="/film" element={<Navigate replace to="/movie" />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
-        <Route path="/movie/add" element={<AddMovie movieList={movieList} setMovieList={setMovieList} />} />
+        <Route path="/movie/add" element={<AddMovie />} />
         <Route path="/movie/edit/:id" element={<EditMovie />} />
         <Route path="/color-game" element={<AddColor />} />
         <Route path="/basic-form" element={<BasicForm />} />

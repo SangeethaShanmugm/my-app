@@ -12,13 +12,13 @@ export function EditMovie() {
     const [movie, setMovie] = useState(null)
   
     useEffect(() => {
-      fetch(`${API}/movie/${id}`, {
+      fetch(`${API}/movies/${id}`, {
         method: "GET",
       })
       .then((data) => data.json())
       .then((mv) => setMovie(mv))
     }, [])
-  
+  //movie- particular id values
 
   
 
@@ -26,7 +26,7 @@ export function EditMovie() {
 
 
   return movie ? <EditMovieForm movie={movie}/> : "Loading....";
-   
+        // null - {} -movie.name
  
 
 }
@@ -70,7 +70,7 @@ function EditMovieForm( { movie } ){
             // 2. body - data -JSON
             // 3. Headers -JSON
              
-            fetch(`${API}/movie/${movie.id}`,{
+            fetch(`${API}/movies/${movie.id}`,{
               method: "PUT",
               body: JSON.stringify(updateMovie),
               headers: {
