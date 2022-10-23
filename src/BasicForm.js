@@ -1,12 +1,14 @@
 import { useFormik } from "formik"
 import * as yup from "yup"
+import { Formik } from 'formik';
+import TextField from '@mui/material/TextField';
 
 
 const formValidationSchema = yup.object({
   email: yup
   .string()
   .min(5, "Need a longer email")
-  .max(15,"Too much email")
+  .max(25,"Too much email")
   .required("Why not fill the email?"),
   password: yup
   .string()
@@ -26,9 +28,10 @@ export function BasicForm() {
 
   return (
     <div>
+      <Formik>   
       <form onSubmit={formik.handleSubmit}>
 
-        <input 
+        <TextField 
           id="email"
           name="email"
           value={formik.values.email}  
@@ -39,7 +42,7 @@ export function BasicForm() {
           <br />
           {formik.touched.email && formik.errors.email ? formik.errors.email : "" }
           <br/>
-        <input 
+        <TextField 
           id="password"
           name="password"
           value={formik.values.password} 
@@ -52,14 +55,7 @@ export function BasicForm() {
          <br />
         <button type="submit">Submit</button>
       </form>
+      </Formik>
     </div>
   );
 }
-
-
-//redux - storing all data -> store
-//terminology 
-//store - state manage
-//Action - CRUD operation
-// reducer - what to add - function
-// Disptach - state changes
