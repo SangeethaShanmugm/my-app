@@ -19,7 +19,7 @@ import Paper from '@mui/material/Paper';
 import { API } from "./global"
 import { EditMovie } from "./EditMovie";
 import { BasicForm } from "./BasicForm";
-
+import { Example } from "./Example"
 export const INTIAL_MOVIE_LIST = [
   {
     name: "RRR",
@@ -146,6 +146,10 @@ export default function App() {
       >
         {mode == "light" ? "dark" : "light"} MODE
       </Button>
+      <Button 
+      color="inherit"
+      onClick={() => navigate("/example")}
+      >Example</Button>
      </Toolbar>
     </AppBar>
 
@@ -160,6 +164,7 @@ export default function App() {
         <Route path="/color-game" element={<AddColor />} />
         <Route path="/basic-form" element={<BasicForm />} />
         <Route path="/users" element={<UserList />} />
+        <Route path="/example" element={<Example />} />
         <Route path="/404" element={<NotFoundPage />}/>
         <Route path="*" element={<Navigate replace to="/404" />}/>
       </Routes>
@@ -175,3 +180,10 @@ export default function App() {
 
 
 
+// App - parent
+
+
+
+
+// Counter - child
+//Like counter  - grand child
