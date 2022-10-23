@@ -1,4 +1,5 @@
-import { createContext, useContext } from "react";
+import { unstable_ClassNameGenerator } from "@mui/material";
+import { createContext, useContext, useState } from "react";
 import { Sample2} from "./Sample2"
 
 //1. Creating - createContext - done
@@ -11,13 +12,26 @@ import { Sample2} from "./Sample2"
 const NameContext = createContext()
 
 export function Example () {
-  const name ="Jack"
+//   const name ="Jack"
+
+// const name = ["Jack", "John","Lisa"]
+const [nameList, setNameList] = useState( ["Jack", "John","Lisa"])
+const [name, setName] = useState("Dhana")
+
+ function sayHello() {
+    alert("You CLicked Me🥳")
+ }
+
     return (
         <NameContext.Provider value={name}>
          <div>
+         {/* {nameList.map((nm, index) => <Sample key={index} name={nm} /> )}
+         <button onClick={sayHello}>Click Me!!!</button><br/><br/> */}
+         <input type="text" value={name} onChange={(e) => setName(e.target.value)}  placeholder="Enter name"  />
+         <button onClick={()=> setNameList([...nameList, name])}>Update Name</button>
            <Sample />
            <Sample1 />
-           <Sample2 />
+           {/* <Sample2 /> */}
         </div>
         </NameContext.Provider>
         
@@ -29,9 +43,9 @@ export const useGlobalContext = () => {
 }
 
 
-function Sample() {
+function Sample({name}) {
  
-    const name = useContext(NameContext)
+    // const name = useContext(NameContext)
     return(
         <div>
             <h1>Welcome Everyone {name}</h1>
@@ -39,9 +53,9 @@ function Sample() {
     )
 }
 
-function Sample1() {
+function Sample1({name}) {
  
-    const name = useContext(NameContext)
+    // const name = useContext(NameContext)
     return(
         <div>
             <h1>Hi All by {name}</h1>
